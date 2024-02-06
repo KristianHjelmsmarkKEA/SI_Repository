@@ -1,6 +1,4 @@
 import xml.etree.ElementTree as ET
-import elementpath 
-from xml.etree import ElementTree
 import yaml
 import json
 import csv
