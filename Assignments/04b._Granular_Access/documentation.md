@@ -17,6 +17,7 @@ Password: read_write_password
 
 Connection String: mongodb+srv://read_write_user:read_write_password@databaseaccessassigneme.6l5zk5j.mongodb.net/
 
+
 -User with read acccess to all collections
 
 Username: read_only_user
@@ -24,6 +25,7 @@ Username: read_only_user
 Password: read_only_password
 
 Connection String: mongodb+srv://read_only_user:read_only_password@databaseaccessassigneme.6l5zk5j.mongodb.net/
+
 
 -User will only be able to see the database, but don't have access to collections
 
