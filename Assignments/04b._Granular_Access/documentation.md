@@ -1,4 +1,5 @@
 General Connection String: mongodb+srv://<username>@<password>.6l5zk5j.mongodb.net/
+
 Steps:
 1. Use powershell, or other cmd along with mongosh.
 2. When opening the powershell, write: mongosh "connection string"
