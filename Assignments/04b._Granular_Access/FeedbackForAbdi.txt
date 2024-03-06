@@ -1,0 +1,3 @@
+Feedback for Abdi's documentation 
+-Write the host IP for ussage
+-A bit more explaination for different parts, fx. the console, and connecting to the db.
