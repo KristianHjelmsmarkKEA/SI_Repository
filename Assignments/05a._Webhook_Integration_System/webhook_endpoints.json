@@ -1,6 +1,18 @@
 [
   {
+    "url": "https://ba51-80-71-141-87.ngrok-free.app",
+    "eventType": "payment.recieved"
+  },
+  {
     "url": "https://example.com/webhook",
     "eventType": "payment_received tester"
+  },
+  {
+    "url": "https://b702e6c177e3de2228af4c5e6c89c77e.serveo.net",
+    "eventType": "payment_received egen integrator"
+  },
+  {
+    "url": "https://b702e6c177e3de2228af4c5e6c89c77e.serveo.net/register-integrator-webhook",
+    "eventType": "payment_received egen integrator"
   }
 ]
