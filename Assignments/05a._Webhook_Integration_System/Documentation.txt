@@ -1,0 +1,24 @@
+Documentation for integrating with webhooks
+
+Prerequisites:
+ -Postman (download & open postman)
+
+ How to register and unregister webhooks
+ 
+ - In Postman create a new POST request
+ - To register new webhook, send URL:
+ Add to body a URL and a eventType following this syntax:
+{
+    "url": "https://example.com/webhook",
+    "eventType": "payment_received"
+}
+ Press send. 
+ - To unregister a exsisting webhook, send URL:
+  Add to body a exsisting URL and a eventType following this syntax:
+{
+    "url": "https://example.com/webhook",
+    "eventType": "payment_received"
+}
+
+To view all exsisting webhooks, make a GET request in Postman
+ - Set Postman URL to: /ping and press send.

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="view" content="width=device-width, initial-scale=1.0">
+        <title>SSE</title>
+    </head>
+<body>
+    <h1>Server-sent events - SSE</h1>
+
+    
+    <div id="chuck_norris"></div>
+
+    <script>
+        const chuckNorrisDiv= document.getElementById("chuck_norris");
+
+        const eventSource = new EventSource("/getNewJoke");
+
+        eventSource.onmessage = (event) => {
+            chuckNorrisDiv.textContent = event.value;
+        }
+
+    </script>
+    
+</body>
+</html>
