@@ -6,14 +6,14 @@ Prerequisites:
  How to register and unregister webhooks
  
  - In Postman create a new POST request
- - To register new webhook, send URL:
+ - To register new webhook, send URL: <serveo-url>/ping                https://8d00b0b61a831848dd86cc70e76d43ed.serveo.net/register
  Add to body a URL and a eventType following this syntax:
 {
     "url": "https://example.com/webhook",
     "eventType": "payment_received"
 }
  Press send. 
- - To unregister a exsisting webhook, send URL:
+ - To unregister a exsisting webhook, send URL: <serveo-url>/ping       https://8d00b0b61a831848dd86cc70e76d43ed.serveo.net/unregister
   Add to body a exsisting URL and a eventType following this syntax:
 {
     "url": "https://example.com/webhook",
@@ -21,4 +21,4 @@ Prerequisites:
 }
 
 To view all exsisting webhooks, make a GET request in Postman
- - Set Postman URL to: /ping and press send.
+ - Set Postman URL to: <serveo-url>/ping and press send.               https://8d00b0b61a831848dd86cc70e76d43ed.serveo.net/ping

@@ -53,9 +53,9 @@ app.post('/unregister', (req, res) => {
 // Ping all registered webhooks
 app.get('/ping', (req, res) => {
   //logging all pinged webhooks 
-  registeredWebhooks.forEach(webhook => {
-    console.log(`Pinging webhook at ${webhook.url} for event ${webhook.eventType}`);
-  });
+  //registeredWebhooks.forEach(webhook => {
+  //  console.log(`Pinging webhook at ${webhook.url} for event ${webhook.eventType}`);
+  //});
   const registeredWebhooks = readEndpointsFromFile();
   return res.status(200).json({ message: 'Pinged all registered webhooks', registeredWebhooks });
 });
