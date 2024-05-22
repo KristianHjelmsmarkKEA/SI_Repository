@@ -1,0 +1,1 @@
+Add the client_secret.json file located on your computer to the SI_Repository/Assignments/08c._Auth_Integration
