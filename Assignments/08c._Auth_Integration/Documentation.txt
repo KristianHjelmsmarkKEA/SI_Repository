@@ -1,1 +1,17 @@
-Add the client_secret.json file located on your computer to the SI_Repository/Assignments/08c._Auth_Integration
+Documentation
+
+Have Node.js and npm installed.
+Have a Google account to create your own OAuth2 credentials.
+
+Create/set up Google OAuth2:
+Go to the Google Cloud Console.
+Create a new project.
+Enable the necessary APIs (Google+ API, Google Drive API).
+Create OAuth2 credentials and download the client_secret.json file.
+Add a redirect URI: http://localhost:3000/callback.
+
+Add the client_secret.json file located on your computer to the SI_Repository/Assignments/08c._Auth_Integration folder.
+
+run: npm install
+
+run: node app.js

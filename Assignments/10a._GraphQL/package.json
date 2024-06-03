@@ -23,6 +23,9 @@
     "test": ""
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12"
+    "apollo-server": "^3.13.0",
+    "cheerio": "^1.0.0-rc.12",
+    "graphql": "^16.8.1",
+    "graphql-subscriptions": "^2.0.0"
   }
 }

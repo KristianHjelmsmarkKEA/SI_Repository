@@ -4,13 +4,31 @@ const yaml = require('js-yaml');
 const xmlParser = require('fast-xml-parser');
 const csv = require('csv-parser');
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
+
+// Define Server B URL
+const SERVER_B_URL = "http://localhost:8000";
+
+// Fetch data from Server B
+async function fetchDataFromServerB(endpoint) {
+  try {
+    const response = await axios.get(`${SERVER_B_URL}${endpoint}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch data from Server B');
+  }
+}
 
 // YAML file Endpoint
 app.get('/yaml', async (req, res) => {
   try {
-    const yamlContent = fs.readFileSync(path.join(__dirname, '../01._Data_Files/me.yaml'), 'utf-8');
+    const filePath = path.join(__dirname, '../01._Data_Files/me.yaml');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('File not found');
+    }
+    const yamlContent = fs.readFileSync(filePath, 'utf-8');
     const parsedYaml = yaml.load(yamlContent);
     res.json(parsedYaml);
   } catch (error) {
@@ -21,7 +39,11 @@ app.get('/yaml', async (req, res) => {
 // Text file Endpoint
 app.get('/text', async (req, res) => {
   try {
-    const txtContent = fs.readFileSync(path.join(__dirname, '../01._Data_Files/me.txt'), 'utf-8');
+    const filePath = path.join(__dirname, '../01._Data_Files/me.txt');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('File not found');
+    }
+    const txtContent = fs.readFileSync(filePath, 'utf-8');
     res.send(txtContent);
   } catch (error) {
     res.status(500).send("Failed to fetch TXT data");
@@ -31,7 +53,11 @@ app.get('/text', async (req, res) => {
 // JSON file Endpoint
 app.get('/json', async (req, res) => {
   try {
-    const jsonContent = fs.readFileSync(path.join(__dirname, '../01._Data_Files/me.json'), 'utf-8');
+    const filePath = path.join(__dirname, '../01._Data_Files/me.json');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('File not found');
+    }
+    const jsonContent = fs.readFileSync(filePath, 'utf-8');
     const parsedJson = JSON.parse(jsonContent);
     res.json(parsedJson);
   } catch (error) {
@@ -42,7 +68,11 @@ app.get('/json', async (req, res) => {
 // XML file Endpoint
 app.get('/xml', async (req, res) => {
   try {
-    const xmlContent = fs.readFileSync(path.join(__dirname, '../01._Data_Files/me.xml'), 'utf-8');
+    const filePath = path.join(__dirname, '../01._Data_Files/me.xml');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('File not found');
+    }
+    const xmlContent = fs.readFileSync(filePath, 'utf-8');
     const parsedXml = xmlParser.parse(xmlContent);
     res.json(parsedXml);
   } catch (error) {
@@ -53,8 +83,12 @@ app.get('/xml', async (req, res) => {
 // CSV file Endpoint
 app.get('/csv', async (req, res) => {
   try {
+    const filePath = path.join(__dirname, '../01._Data_Files/me.csv');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('File not found');
+    }
     const itemsFromCSV = [];
-    fs.createReadStream(path.join(__dirname, '../01._Data_Files/me.csv'))
+    fs.createReadStream(filePath)
       .pipe(csv())
       .on('data', (row) => {
         itemsFromCSV.push(row);
@@ -70,8 +104,19 @@ app.get('/csv', async (req, res) => {
   }
 });
 
+// Proxy endpoint to fetch data from Server B
+app.get('/from-server-b/*', async (req, res) => {
+  try {
+    const endpoint = req.params[0];
+    const data = await fetchDataFromServerB(`/${endpoint}`);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch data from Server B" });
+  }
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server A running on port ${PORT}`);
 });

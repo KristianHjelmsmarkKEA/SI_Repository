@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style>
+            h1 {
+                text-align: center;
+            }
+            
+            table, th, td {
+                border: 1px solid black;
+            }
+    
+            main {
+                min-height: calc(100vh - 40px);
+                margin: 0 4em 0 4em;
+            }
+    
+            table {
+                width: 100%;
+            }
+    
+            footer {
+                color: grey;
+                font-size: 0.8em;
+            }
+        </style>
+        <title>hms - Docs</title>
+    </head>
+    <body>
+        <main>
+            <h1>hms</h1>
+    
+            <div class="database-table">
+        <h2 class="database-table-name">accounts</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>username</td><td>varchar(10)</td>
+                </tr>
+                
+                <tr>
+                    <td>password</td><td>varchar(30)</td>
+                </tr>
+                
+                <tr>
+                    <td>role</td><td>enum('admin','doctor','patient')</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">appointment</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>patient_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>clinic_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>doctor_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>department_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>hospital_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>appointment_date</td><td>datetime</td>
+                </tr>
+                
+                <tr>
+                    <td>appointment_date_end</td><td>datetime</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">appointment_audit</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>action_type</td><td>enum('INSERT','UPDATE','DELETE')</td>
+                </tr>
+                
+                <tr>
+                    <td>appointment_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>deleted_appointment_date</td><td>datetime</td>
+                </tr>
+                
+                <tr>
+                    <td>action_timestamp</td><td>timestamp</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">clinic</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>department_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>name</td><td>varchar(255)</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">department</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>hospital_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>name</td><td>varchar(255)</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">doctor</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>Persondata_id</td><td>int</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">hospital</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>name</td><td>varchar(255)</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">journal</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>doctor_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>journalnotes</td><td>varchar(255)</td>
+                </tr>
+                
+                <tr>
+                    <td>created_on</td><td>datetime</td>
+                </tr>
+                
+                <tr>
+                    <td>modified_on</td><td>datetime</td>
+                </tr>
+                
+                <tr>
+                    <td>cpr</td><td>varchar(10)</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">patient</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>clinic_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>persondata_id</td><td>int</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">persondata</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>first_name</td><td>varchar(45)</td>
+                </tr>
+                
+                <tr>
+                    <td>last_name</td><td>varchar(45)</td>
+                </tr>
+                
+                <tr>
+                    <td>contact_number</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>cpr</td><td>varchar(10)</td>
+                </tr>
+                
+                <tr>
+                    <td>address</td><td>varchar(45)</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">prescription</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>patient_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>doctor_id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>dosage</td><td>varchar(255)</td>
+                </tr>
+                
+                <tr>
+                    <td>instructions</td><td>text</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">rating</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>id</td><td>int</td>
+                </tr>
+                
+                <tr>
+                    <td>account_id</td><td>varchar(10)</td>
+                </tr>
+                
+                <tr>
+                    <td>username_getting_rated</td><td>varchar(10)</td>
+                </tr>
+                
+                <tr>
+                    <td>title</td><td>varchar(30)</td>
+                </tr>
+                
+                <tr>
+                    <td>text</td><td>varchar(255)</td>
+                </tr>
+                
+                <tr>
+                    <td>score</td><td>int</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    </div>
+            </main> 
+            <br><br>
+            <footer>Powered by MRO</footer>
+        </body>
+        </html>

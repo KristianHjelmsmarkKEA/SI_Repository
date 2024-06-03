@@ -1,22 +1,19 @@
-import fs from "fs";
+import { ApolloServer, gql } from 'apollo-server';
+import { promises as fs } from 'fs';
+import path from 'path';
+import resolvers from './resolvers.js';
 
-// https://www.proshop.dk/Baerbar-computer
-// const response = await fetch("https://www.proshop.dk/Baerbar-computer");
-// const result = await response.text();
-// fs.writeFileSync("index.html", result);
+// Load schema from schema.graphql
+const __dirname = path.resolve();
+const typeDefs = gql(await fs.readFile(path.join(__dirname, 'schema.graphql'), 'utf8'));
 
-const htmlPageString = fs.readFileSync("index.html").toString();
+// Create Apollo server
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-import { load } from "cheerio";
-
-const $ = load(htmlPageString);
-
-$("#products [product]").each((index, element) => {
-    const name = $(element).find(".site-product-link h2").text();
-    const description = $(element).find(".site-product-link").text();
-    const price = $(element).find(".site-currency-lg").text();
-
-    console.log(name);
-    console.log(price);
-    console.log("===============================")
+// Start the server
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
 });

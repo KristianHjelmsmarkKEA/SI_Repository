@@ -33,6 +33,8 @@ app.get('/', (req, res) => {
   res.send('Oauth example page');
 });
 
+
+//This creates OAuth2 client and get the authorization url for login with google acc.
 app.get('/login', (req, res) => {
   const oauth2Client = new google.auth.OAuth2(
     client_id,
@@ -51,6 +53,7 @@ app.get('/login', (req, res) => {
   res.redirect(authorizationUrl);
 });
 
+//AFter userlogin, google redirects back to application with authorization code. Exchanges authorization code for access token
 app.get('/callback', async (req, res) => {
   const oauth2Client = req.session.oauth2Client;
   const code = req.query.code;
@@ -66,6 +69,7 @@ app.get('/callback', async (req, res) => {
   }
 });
 
+//Checks user valid tokens befor allowing access.
 app.get('/index', (req, res) => {
   if (req.session.tokens) {
     res.send("This is the secret page");
