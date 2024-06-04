@@ -1,19 +1,16 @@
 {
-  "name": "08c._auth_integration",
+  "name": "02a._data_format_translation_server_nodejs",
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "app.js",
+  "main": "02a._Data_Format_Translation_server_Node.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "express-session": "^1.18.0",
-    "googleapis": "^137.1.0",
-    "open": "^10.1.0",
-    "openurl": "^1.1.1"
+    "axios": "^1.7.2"
   }
 }

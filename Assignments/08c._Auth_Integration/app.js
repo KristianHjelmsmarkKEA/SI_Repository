@@ -1,14 +1,17 @@
-const express = require('express');
-const session = require('express-session');
-const { google } = require('googleapis');
-const fs = require('fs');
-const path = require('path');
-const open = require('open');
+import express from 'express';
+import session from 'express-session';
+import { google } from 'googleapis';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import openurl from 'openurl';
 
 const app = express();
 const port = 3000;
 
 // Load client secret from a file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const CLIENT_SECRET_FILE = path.join(__dirname, 'client_secret.json');
 const SCOPES = ['openid', 'https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'];
 
@@ -33,8 +36,7 @@ app.get('/', (req, res) => {
   res.send('Oauth example page');
 });
 
-
-//This creates OAuth2 client and get the authorization url for login with google acc.
+// This creates OAuth2 client and get the authorization url for login with google account
 app.get('/login', (req, res) => {
   const oauth2Client = new google.auth.OAuth2(
     client_id,
@@ -53,7 +55,7 @@ app.get('/login', (req, res) => {
   res.redirect(authorizationUrl);
 });
 
-//AFter userlogin, google redirects back to application with authorization code. Exchanges authorization code for access token
+// After user login, google redirects back to application with authorization code. Exchanges authorization code for access token
 app.get('/callback', async (req, res) => {
   const oauth2Client = req.session.oauth2Client;
   const code = req.query.code;
@@ -69,7 +71,7 @@ app.get('/callback', async (req, res) => {
   }
 });
 
-//Checks user valid tokens befor allowing access.
+// Checks user valid tokens before allowing access
 app.get('/index', (req, res) => {
   if (req.session.tokens) {
     res.send("This is the secret page");
@@ -80,4 +82,5 @@ app.get('/index', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
+  openurl.open(`http://localhost:${port}/`);
 });

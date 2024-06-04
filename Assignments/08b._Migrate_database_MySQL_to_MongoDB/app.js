@@ -1,8 +1,7 @@
-const  MongoClient  = require('mongodb');
-const  Model  = require('objection');
+const { MongoClient } = require('mongodb');
+const { Model } = require('objection');
 const config = require("./knexfile.js")[process.env.NODE_ENV || "development"];
 const knex = require("knex")(config);
-
 
 // MongoDB connection configuration
 const mongoConfig = {

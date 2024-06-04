@@ -1,15 +1,20 @@
-const express = require('express');
-const fs = require('fs');
-const yaml = require('js-yaml');
-const xmlParser = require('fast-xml-parser');
-const csv = require('csv-parser');
-const path = require('path');
-const axios = require('axios');
+import express from 'express';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import xmlParser from 'fast-xml-parser';
+import csv from 'csv-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import axios from 'axios';
 
 const app = express();
 
 // Define Server B URL
 const SERVER_B_URL = "http://localhost:8000";
+
+// Helper to get __dirname with ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Fetch data from Server B
 async function fetchDataFromServerB(endpoint) {

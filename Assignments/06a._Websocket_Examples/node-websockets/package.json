@@ -2,11 +2,17 @@
   "name": "websockets",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "clients.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "websocket": "^1.0.35",
+    "websocketserver": "^1.0.0",
+    "ws": "^8.17.0"
+  }
 }
